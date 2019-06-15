@@ -8,12 +8,5 @@ namespace IDao
 {
     class Class1
     {
-        public void show() {
-
-        }
-      public string Main()
-        {
-            return "aa";
-        }
     }
 }
