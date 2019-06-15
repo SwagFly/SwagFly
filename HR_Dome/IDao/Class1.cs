@@ -8,6 +8,7 @@ namespace IDao
 {
     class Class1
     {
+        public void asd() { }
         public string show(){
             return "null";
         }
