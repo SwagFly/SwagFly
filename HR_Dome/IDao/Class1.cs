@@ -8,5 +8,8 @@ namespace IDao
 {
     class Class1
     {
+        public string show() {
+            return "易嘉峰";
+        }
     }
 }
