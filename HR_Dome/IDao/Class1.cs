@@ -8,9 +8,6 @@ namespace IDao
 {
     class Class1
     {
-      public string Main()
-        {
-            return "aa";
-        }
+        public void asd() { }
     }
 }
