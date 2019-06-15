@@ -23,7 +23,7 @@ namespace UI.Controllers
         /// </summary>
         /// <returns></returns>
         public ActionResult Show() {
-            return View();
+            return Content("1");
         }
     }
 }
