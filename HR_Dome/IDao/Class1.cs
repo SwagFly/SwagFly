@@ -11,5 +11,9 @@ namespace IDao
         public void show() {
 
         }
+      public string Main()
+        {
+            return "aa";
+        }
     }
 }
