@@ -23,19 +23,27 @@
     @*<script type="text/javascript" src="~/javascript/login.js"></script>*@
     <script type="text/javascript">
         $(function () {
+            //点击登录
             $(":button").click(function () {
                 var user = {
                     u_name: $("#userName").val(),
                     u_password: $("#userPassword").val()
                 }
-                $.ajax({
-                    url: "Show",
-                    type:"get",
-                    data: "userClass=" + JSON.stringify(user),
-                    success: function (result) {
-                        alert(result);
-                    }
-                })
+                var reg = /^\S{6,}$/;
+                if (!reg.test(user.u_name)) {
+                    alert("登录名格式不正确！长度必须大于6位且不能有空格！");
+                } else if (!reg.test(user.u_password)) {
+                    alert("登录密码格式不正确！长度必须大于6位且不能有空格！");
+                } else {
+                    $.ajax({
+                        url: "HR_DomeLogin/Show",
+                        type: "get",
+                        data: "userClass=" + JSON.stringify(user),
+                        success: function (result) {
+                            alert(result);
+                        }
+                    })
+                }
             });
         });
     </script>
