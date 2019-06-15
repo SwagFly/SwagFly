@@ -14,9 +14,5 @@ namespace Dao
         {
 
         }
-        public void test()
-        {
-
-        }
     }
 }
