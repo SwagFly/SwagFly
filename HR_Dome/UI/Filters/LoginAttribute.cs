@@ -26,7 +26,10 @@ namespace UI.Filters
         /// <param name="filterContext"></param>
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            base.OnActionExecuting(filterContext);
+            //拦截非法侵入进入Main进行操作--》登录验证
+            if (filterContext.HttpContext.Session["LoginOrMain"]==null) {
+                filterContext.HttpContext.Response.Redirect("/HR_DomeLogin/Login");
+            }
         }
 
         /// <summary>

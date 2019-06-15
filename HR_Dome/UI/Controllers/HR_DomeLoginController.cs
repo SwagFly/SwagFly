@@ -6,7 +6,8 @@ using System.Web.Mvc;
 
 namespace UI.Controllers
 {
-    public class HR_DomeMainController : Controller
+    
+    public class HR_DomeLoginController : Controller
     {
         /// <summary>
         /// 程序入口
