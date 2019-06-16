@@ -48,6 +48,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="bonusDao.cs" />
+    <Compile Include="config_file_first_kindDao.cs" />
+    <Compile Include="config_file_second_kindDao.cs" />
+    <Compile Include="config_file_third_kindDao.cs" />
+    <Compile Include="config_majorDao.cs" />
+    <Compile Include="config_major_kindDao.cs" />
+    <Compile Include="config_major_professionalDao.cs" />
+    <Compile Include="config_primary_keyDao.cs" />
+    <Compile Include="config_public_charDao.cs" />
+    <Compile Include="config_question_first_kindDao.cs" />
+    <Compile Include="config_question_second_kindDao.cs" />
+    <Compile Include="engage_answerDao.cs" />
+    <Compile Include="engage_answer_detailsDao.cs" />
+    <Compile Include="engage_examDao.cs" />
+    <Compile Include="engage_exam_detailsDao.cs" />
+    <Compile Include="engage_interviewDao.cs" />
+    <Compile Include="engage_major_releaseDao.cs" />
+    <Compile Include="engage_resumeDao.cs" />
+    <Compile Include="engage_subjectsDao.cs" />
+    <Compile Include="human_fileDao.cs" />
+    <Compile Include="human_file_digDao.cs" />
+    <Compile Include="major_changeDao.cs" />
+    <Compile Include="PermissionDao.cs" />
+    <Compile Include="RightsObjectIDao.cs" />
+    <Compile Include="RoleIDao.cs" />
+    <Compile Include="salary_grantDao.cs" />
+    <Compile Include="salary_grant_detailsDao.cs" />
+    <Compile Include="salary_projectDao.cs" />
+    <Compile Include="salary_standardDao.cs" />
+    <Compile Include="salary_standard_detailsDao.cs" />
+    <Compile Include="trainingDao.cs" />
     <Compile Include="UserDao.cs" />
     <Compile Include="DaoBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

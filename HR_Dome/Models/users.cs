@@ -18,5 +18,6 @@ namespace Models
         public string u_name { get; set; }
         public string u_true_name { get; set; }
         public string u_password { get; set; }
+        public Nullable<int> rid { get; set; }
     }
 }

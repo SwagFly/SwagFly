@@ -40,8 +40,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="bonusBLL.cs" />
+    <Compile Include="config_file_first_kindBLL.cs" />
+    <Compile Include="config_file_second_kindBLL.cs" />
+    <Compile Include="config_file_third_kindBLL.cs" />
+    <Compile Include="config_majorBLL.cs" />
+    <Compile Include="config_major_kindBLL.cs" />
+    <Compile Include="config_major_professionalBLL.cs" />
+    <Compile Include="config_primary_keyBLL.cs" />
+    <Compile Include="config_public_charBLL.cs" />
+    <Compile Include="config_question_first_kindBLL.cs" />
+    <Compile Include="config_question_second_kindBLL.cs" />
+    <Compile Include="engage_answerBLL.cs" />
+    <Compile Include="engage_answer_detailsBLL.cs" />
+    <Compile Include="engage_examBLL.cs" />
+    <Compile Include="engage_exam_detailsBLL.cs" />
+    <Compile Include="engage_interviewBLL.cs" />
+    <Compile Include="engage_major_releaseBLL.cs" />
+    <Compile Include="engage_resumeBLL.cs" />
+    <Compile Include="engage_subjectsBLL.cs" />
+    <Compile Include="human_fileBLL.cs" />
+    <Compile Include="human_file_digBLL.cs" />
+    <Compile Include="major_changeBLL.cs" />
+    <Compile Include="PermissionBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UsersBll.cs" />
+    <Compile Include="RightsObjectBLL.cs" />
+    <Compile Include="RoleBLL.cs" />
+    <Compile Include="salary_grantBLL.cs" />
+    <Compile Include="salary_grant_detailsBLL.cs" />
+    <Compile Include="salary_projectBLL.cs" />
+    <Compile Include="salary_standardBLL.cs" />
+    <Compile Include="salary_standard_detailsBLL.cs" />
+    <Compile Include="trainingBLL.cs" />
+    <Compile Include="UsersBLL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dao\Dao.csproj">

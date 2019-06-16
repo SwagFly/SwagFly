@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="HR_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="HR_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="bonus">
           <Key>
             <PropertyRef Name="bon_id" />
@@ -485,6 +485,31 @@
           <Property Name="regist_time" Type="datetime" />
           <Property Name="check_time" Type="datetime" />
         </EntityType>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="pid" />
+          </Key>
+          <Property Name="pid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rid" Type="int" />
+          <Property Name="roid" Type="int" />
+        </EntityType>
+        <EntityType Name="RightsObject">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="text" Type="varchar" MaxLength="50" />
+          <Property Name="fid" Type="int" />
+          <Property Name="adress" Type="varchar" MaxLength="100" />
+          <Property Name="state" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="rid" />
+          </Key>
+          <Property Name="rid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rname" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="salary_grant">
           <Key>
             <PropertyRef Name="sgr_id" />
@@ -589,6 +614,7 @@
           <Property Name="u_name" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="u_true_name" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="u_password" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="rid" Type="int" />
         </EntityType>
         <Function Name="procDanHao" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="danhao" Type="varchar" Mode="InOut" />
@@ -619,6 +645,9 @@
           <EntitySet Name="human_file" EntityType="Self.human_file" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="human_file_dig" EntityType="Self.human_file_dig" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="major_change" EntityType="Self.major_change" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Permission" EntityType="Self.Permission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RightsObject" EntityType="Self.RightsObject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="salary_grant" EntityType="Self.salary_grant" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="salary_grant_details" EntityType="Self.salary_grant_details" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="salary_project" EntityType="Self.salary_project" Schema="dbo" store:Type="Tables" />
@@ -627,8 +656,7 @@
           <EntitySet Name="training" EntityType="Self.training" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="HR_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1216,6 +1244,7 @@
           <Property Name="u_name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="u_true_name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="u_password" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="rid" Type="Int32" />
         </EntityType>
         <EntityContainer Name="HR_DBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="bonus" EntityType="Self.bonus" />
@@ -1248,12 +1277,40 @@
           <EntitySet Name="training" EntityType="Self.training" />
           <EntitySet Name="users" EntityType="Self.users" />
           <FunctionImport Name="procDanHao">
-            <Parameter Name="danhao" Mode="InOut" Type="String" />
+          <Parameter Name="danhao" Mode="InOut" Type="String" />
           </FunctionImport>
           <FunctionImport Name="procSalaryGrant">
-            <Parameter Name="danhao" Mode="InOut" Type="String" />
+          <Parameter Name="danhao" Mode="InOut" Type="String" />
           </FunctionImport>
+          <EntitySet Name="Permission" EntityType="HR_DBModel.Permission" />
+          <EntitySet Name="RightsObject" EntityType="HR_DBModel.RightsObject" />
+          <EntitySet Name="Role" EntityType="HR_DBModel.Role" />
         </EntityContainer>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="pid" />
+          </Key>
+          <Property Name="pid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rid" Type="Int32" />
+          <Property Name="roid" Type="Int32" />
+        </EntityType>
+        <EntityType Name="RightsObject">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="text" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fid" Type="Int32" />
+          <Property Name="adress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="rid" />
+          </Key>
+          <Property Name="rid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1867,6 +1924,7 @@
           <EntitySetMapping Name="users">
             <EntityTypeMapping TypeName="HR_DBModel.users">
               <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="rid" ColumnName="rid" />
                 <ScalarProperty Name="u_id" ColumnName="u_id" />
                 <ScalarProperty Name="u_name" ColumnName="u_name" />
                 <ScalarProperty Name="u_true_name" ColumnName="u_true_name" />
@@ -1876,6 +1934,34 @@
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="procDanHao" FunctionName="HR_DBModel.Store.procDanHao" />
           <FunctionImportMapping FunctionImportName="procSalaryGrant" FunctionName="HR_DBModel.Store.procSalaryGrant" />
+          <EntitySetMapping Name="Permission">
+            <EntityTypeMapping TypeName="HR_DBModel.Permission">
+              <MappingFragment StoreEntitySet="Permission">
+                <ScalarProperty Name="roid" ColumnName="roid" />
+                <ScalarProperty Name="rid" ColumnName="rid" />
+                <ScalarProperty Name="pid" ColumnName="pid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RightsObject">
+            <EntityTypeMapping TypeName="HR_DBModel.RightsObject">
+              <MappingFragment StoreEntitySet="RightsObject">
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="adress" ColumnName="adress" />
+                <ScalarProperty Name="fid" ColumnName="fid" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="HR_DBModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="rname" ColumnName="rname" />
+                <ScalarProperty Name="rid" ColumnName="rid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

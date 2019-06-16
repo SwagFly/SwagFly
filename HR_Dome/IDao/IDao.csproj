@@ -40,6 +40,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="bonusIDao.cs" />
+    <Compile Include="PermissionIDao.cs" />
+    <Compile Include="RightsObjectIDao.cs" />
+    <Compile Include="RoleIDao.cs" />
+    <Compile Include="config_file_first_kindIDao.cs" />
+    <Compile Include="config_file_second_kindIDao.cs" />
+    <Compile Include="config_file_third_kindIDao.cs" />
+    <Compile Include="config_majorIDao.cs" />
+    <Compile Include="config_major_kindIDao.cs" />
+    <Compile Include="config_major_professionalIDao.cs" />
+    <Compile Include="config_primary_keyIDao.cs" />
+    <Compile Include="config_public_charIDao.cs" />
+    <Compile Include="config_question_first_kindIDao.cs" />
+    <Compile Include="config_question_second_kindIDao.cs" />
+    <Compile Include="engage_answerIDao.cs" />
+    <Compile Include="engage_answer_detailsIDao.cs" />
+    <Compile Include="engage_examIDao.cs" />
+    <Compile Include="engage_exam_detailsIDao.cs" />
+    <Compile Include="engage_interviewIDao.cs" />
+    <Compile Include="engage_major_releaseIDao.cs" />
+    <Compile Include="engage_resumeIDao.cs" />
+    <Compile Include="engage_subjectsIDao.cs" />
+    <Compile Include="human_fileIDao.cs" />
+    <Compile Include="human_file_digIDao.cs" />
+    <Compile Include="major_changeIDao.cs" />
+    <Compile Include="salary_grantIDao.cs" />
+    <Compile Include="salary_grant_detailsIDao.cs" />
+    <Compile Include="salary_projectIDao.cs" />
+    <Compile Include="salary_standardIDao.cs" />
+    <Compile Include="salary_standard_detailsIDao.cs" />
+    <Compile Include="trainingIDao.cs" />
     <Compile Include="UsersIDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

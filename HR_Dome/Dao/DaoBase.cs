@@ -47,9 +47,13 @@ namespace Dao
             return models.Set<T>().Where(where)
                 .Select(e => e)
                 .ToList();
+        //public IQueryable<T> LoadItems(Expression<Func<T, bool>> whereLambda)
+        //{
+        //    return MyBaseDbContext.Set<T>().Where(whereLambda).AsQueryable();
+        //}
         }
         /// <summary>
-        /// 
+        /// EF分页
         /// </summary>
         /// <typeparam name="K">泛型返回类型</typeparam>
         /// <param name="order">order</param>

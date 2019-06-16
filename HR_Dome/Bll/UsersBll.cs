@@ -8,9 +8,27 @@ using Dao;
 using IDao;
 using IBll;
 using Models;
+using System.Linq.Expressions;
+
 namespace Bll
 {
-    public class UsersBll:UsersIBll
+    /// <summary>
+    /// 用户表
+    /// </summary>
+    public class UsersBLL:UsersIBll
     {
+        private static UsersIDao dao = IocType.GetIocType<UserDao>("UserDao", "UserDao");
+
+        /// <summary>
+        /// 查询登录信息
+        /// </summary>
+        /// <param name="user">登录者的账户密码</param>
+        /// <returns>单个登录者信息</returns>
+        public users Login(users user)
+        {
+            Expression<Func<users, bool>> where = (e => e.u_name.Equals("admins")&&e.u_password.Equals("admins"));
+            return dao.Login(where);
+        }
+
     }
 }
