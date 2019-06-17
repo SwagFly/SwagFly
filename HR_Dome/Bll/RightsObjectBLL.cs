@@ -14,7 +14,7 @@ namespace Bll
     /// <summary>
     /// 页面表
     /// </summary>
-    public class RightsObjectBLL
+    public class RightsObjectBLL: RightsObjectIBLL
     {
         private static RightsObjectIDao dao = IocType.GetIocType<RightsObjectDao>("RightsObjectDao", "RightsObjectDao");
         /// <summary>
