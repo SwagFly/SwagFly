@@ -11,5 +11,6 @@ namespace IDao
     /// </summary>
     public interface PermissionIDao
     {
+
     }
 }

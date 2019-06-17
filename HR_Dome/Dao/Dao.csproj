@@ -71,7 +71,7 @@
     <Compile Include="human_file_digDao.cs" />
     <Compile Include="major_changeDao.cs" />
     <Compile Include="PermissionDao.cs" />
-    <Compile Include="RightsObjectIDao.cs" />
+    <Compile Include="RightsObjectDao.cs" />
     <Compile Include="RoleIDao.cs" />
     <Compile Include="salary_grantDao.cs" />
     <Compile Include="salary_grant_detailsDao.cs" />

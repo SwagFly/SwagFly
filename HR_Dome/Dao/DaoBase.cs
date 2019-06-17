@@ -110,5 +110,14 @@ namespace Dao
         public static int AUD(string sql) {
             return models.Database.ExecuteSqlCommand(sql);
         }
+        /// <summary>
+        /// 通用查询Sql语句
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <returns></returns>
+        public static List<T> SelectSQL(string sql) {
+            return models.Database.SqlQuery<T>(sql).ToList();
+        }
+
     }
 }
