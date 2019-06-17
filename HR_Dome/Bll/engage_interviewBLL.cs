@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using IBll;
 namespace Bll
 {
     /// <summary>
     /// 面试
     /// </summary>
-    public class engage_interviewBLL
+    public class engage_interviewBLL: engage_interviewIBLL
     {
     }
 }
