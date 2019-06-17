@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using IBll;
+using Dao;
+using IDao;
+using Models;
+using IOC;
 namespace Bll
 {
     /// <summary>
@@ -11,5 +15,7 @@ namespace Bll
     /// </summary>
     public class bonusBLL:bonusIBLL
     {
+        //实现接口
+       private static bonusIDao dao = IocType.GetIocType<bonusDao>("bonusDao", "bonusDao");
     }
 }
