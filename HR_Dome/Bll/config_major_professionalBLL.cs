@@ -15,6 +15,6 @@ namespace Bll
     /// </summary>
     public class config_major_professionalBLL: config_major_professionalIBLL
     {
-        //private static config_major_professionalIDao dao = IocType.GetIocType<config_major_professionalDao>("","");
+        private static config_major_professionalIDao dao = IocType.GetIocType<config_major_professionalDao>("config_major_professionalDao", "config_major_professionalDao");
     }
 }

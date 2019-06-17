@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using IBll;
+using Models;
+using Dao;
+using IDao;
+using IOC;
 namespace Bll
 {
     /// <summary>
@@ -11,5 +15,6 @@ namespace Bll
     /// </summary>
     public class engage_resumeBLL: engage_resumeIBLL
     {
+        private static engage_resumeIDao dao = IocType.GetIocType<engage_resumeDao>("engage_resumeDao", "engage_resumeDao");
     }
 }
