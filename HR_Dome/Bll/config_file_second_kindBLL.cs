@@ -9,7 +9,7 @@ namespace Bll
     /// <summary>
     /// 二级机构设置
     /// </summary>
-    public interface config_file_second_kindBLL
+    public class config_file_second_kindBLL
     {
     }
 }

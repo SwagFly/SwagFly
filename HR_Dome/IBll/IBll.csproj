@@ -40,6 +40,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="bonusIBLL.cs" />
+    <Compile Include="config_file_first_kindIBLL.cs" />
+    <Compile Include="config_file_second_kindIBLL.cs" />
+    <Compile Include="config_file_third_kindIBLL.cs" />
+    <Compile Include="config_majorIBLL.cs" />
+    <Compile Include="config_major_kindIBLL.cs" />
+    <Compile Include="config_major_professionalIBLL.cs" />
+    <Compile Include="config_primary_keyIBLL.cs" />
+    <Compile Include="config_public_charIBLL.cs" />
+    <Compile Include="config_question_first_kindIBLL.cs" />
+    <Compile Include="config_question_second_kindIBLL.cs" />
+    <Compile Include="engage_answerIBLL.cs" />
+    <Compile Include="engage_answer_detailsIBLL.cs" />
+    <Compile Include="engage_examIBLL.cs" />
+    <Compile Include="engage_exam_detailsIBLL.cs" />
+    <Compile Include="engage_interviewIBLL.cs" />
+    <Compile Include="engage_major_releaseIBLL.cs" />
+    <Compile Include="engage_resumeIBLL.cs" />
+    <Compile Include="engage_subjectsIBLL.cs" />
+    <Compile Include="human_fileIBLL.cs" />
+    <Compile Include="human_file_digIBLL.cs" />
+    <Compile Include="major_changeIBLL.cs" />
+    <Compile Include="PermissionIBLL.cs" />
+    <Compile Include="RightsObjectIBLL.cs" />
+    <Compile Include="RoleIBLL.cs" />
+    <Compile Include="salary_grantIBLL.cs" />
+    <Compile Include="salary_grant_detailsIBLL.cs" />
+    <Compile Include="salary_projectIBLL.cs" />
+    <Compile Include="salary_standardIBLL.cs" />
+    <Compile Include="salary_standard_detailsIBLL.cs" />
+    <Compile Include="trainingIBLL.cs" />
     <Compile Include="UsersIBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
