@@ -7,7 +7,7 @@ using IBll;
 namespace Bll
 {
     /// <summary>
-    /// 职位分类
+    /// 职位设置
     /// </summary>
     public class config_majorBLL: config_majorIBLL
     {
