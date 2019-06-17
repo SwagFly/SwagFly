@@ -46,5 +46,14 @@ namespace UI.Controllers
             List<RightsObject> rigList = rigBll.GetRoleResult(adminRole,treeId);
             return Content(JsonConvert.SerializeObject(rigList));
         }
+
+        /// <summary>
+        /// 权限的动态显示
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult MainTreeShows()
+        {
+            return View();
+        }
     }
 }

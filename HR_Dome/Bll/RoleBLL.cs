@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using IBll;
 namespace Bll
 {
     /// <summary>
     /// 权限详细表
     /// </summary>
-    public class RoleBLL
+    public class RoleBLL: RoleIBLL
     {
     }
 }
