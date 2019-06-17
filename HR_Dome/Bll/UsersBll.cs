@@ -26,7 +26,7 @@ namespace Bll
         /// <returns>单个登录者信息</returns>
         public users Login(users user)
         {
-            Expression<Func<users, bool>> where = (e => e.u_name.Equals("admins")&&e.u_password.Equals("admins"));
+            Expression<Func<users, bool>> where = (e => e.u_name.Equals(user.u_name)&&e.u_password.Equals(user.u_password));
             return dao.Login(where);
         }
 
