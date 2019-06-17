@@ -11,7 +11,7 @@ namespace Dao
     /// <summary>
     /// 简历管理IDao
     /// </summary>
-    public class engage_resumeDao:DaoBase<engage_major_release>, engage_major_releaseIDao
+    public class engage_resumeDao : DaoBase<engage_resume>, engage_resumeIDao
     {
     }
 }

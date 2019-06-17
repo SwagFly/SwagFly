@@ -15,6 +15,7 @@ namespace Bll
     /// </summary>
     public class engage_resumeBLL: engage_resumeIBLL
     {
+        //engage_examDao dao = IocType.GetIocType<engage_examIDao>("engage_resumeDao", "engage_resumeDao");
         private static engage_resumeIDao dao = IocType.GetIocType<engage_resumeDao>("engage_resumeDao", "engage_resumeDao");
     }
 }
