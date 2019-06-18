@@ -20,7 +20,5 @@ namespace Dao
             //出现第一次错误，Web配置文件中没有链接字符串
             return SelectWhere(where).FirstOrDefault();
         }
-
-        
     }
 }
