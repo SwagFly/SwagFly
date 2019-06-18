@@ -32,7 +32,7 @@ namespace Bll
 
         public List<users> PageData<K>(Expression<Func<users, K>> order, Expression<Func<users, bool>> where, PageModel page)
         {
-            return dao.PageData<>
+            return null;
         }
     }
 }
