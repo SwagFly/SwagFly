@@ -30,5 +30,9 @@ namespace Bll
             return dao.Login(where);
         }
 
+        public List<users> SelectUsersAll()
+        {
+            return dao.SelectAll();
+        }
     }
 }
