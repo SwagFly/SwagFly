@@ -16,5 +16,12 @@ namespace Bll
     public class config_file_second_kindBLL: config_file_second_kindIBLL
     {
         private static config_file_second_kindIDao dao = IocType.GetIocType<config_file_second_kindDao>("config_file_second_kindDao", "config_file_second_kindDao");
+        /// <summary>
+        /// 查询二级机构
+        /// </summary>
+        /// <returns></returns>
+        public List<config_file_second_kind> SelectSecond_kind(config_file_second_kind second) {
+            return dao.SelectSecond_kind(second);
+        }
     }
 }

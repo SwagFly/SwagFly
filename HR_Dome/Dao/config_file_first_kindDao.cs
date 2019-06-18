@@ -13,5 +13,12 @@ namespace Dao
     /// </summary>
     public class config_file_first_kindDao:DaoBase<config_file_first_kind>,config_file_first_kindIDao
     {
+        /// <summary>
+        /// 查询所有一级机构
+        /// </summary>
+        /// <returns></returns>
+        public List<config_file_first_kind> SelectFirst_kind() {
+            return SelectAll();
+        }
     }
 }

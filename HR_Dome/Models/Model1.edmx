@@ -614,7 +614,7 @@
           <Property Name="u_name" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="u_true_name" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="u_password" Type="varchar" MaxLength="60" Nullable="false" />
-          <Property Name="rid" Type="int" />
+          <Property Name="rid" Type="int" Nullable="false" />
         </EntityType>
         <Function Name="procDanHao" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="danhao" Type="varchar" Mode="InOut" />
@@ -1244,7 +1244,7 @@
           <Property Name="u_name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="u_true_name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="u_password" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="rid" Type="Int32" />
+          <Property Name="rid" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityContainer Name="HR_DBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="bonus" EntityType="Self.bonus" />

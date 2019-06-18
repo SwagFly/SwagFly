@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,10 @@ namespace IBll
     /// </summary>
     public interface config_file_first_kindIBLL
     {
+        /// <summary>
+        /// 查询所有一级机构
+        /// </summary>
+        /// <returns></returns>
+        List<config_file_first_kind> SelectFirst_kind();
     }
 }

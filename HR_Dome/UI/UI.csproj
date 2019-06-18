@@ -197,6 +197,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Permission\Controllers\User_controlControllerController.cs" />
     <Compile Include="Areas\Permission\PermissionAreaRegistration.cs" />
+    <Compile Include="Areas\Recruitment\Controllers\Job_postingController.cs" />
+    <Compile Include="Areas\Recruitment\RecruitmentAreaRegistration.cs" />
     <Compile Include="Areas\Salary\Controllers\Salary_DataController.cs" />
     <Compile Include="Areas\Salary\SalaryAreaRegistration.cs" />
     <Compile Include="Controllers\HR_DomeLoginController.cs" />
@@ -998,6 +1000,10 @@
     <Content Include="Areas\Salary\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Salary\Views\Salary_Data\Index.cshtml" />
     <Content Include="Areas\Permission\Views\User_controlController\Index.cshtml" />
+    <Content Include="Areas\Recruitment\Views\web.config" />
+    <Content Include="Areas\Recruitment\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Recruitment\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Recruitment\Views\Job_posting\Registration_entrance.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -1029,6 +1035,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Permission\Models\" />
+    <Folder Include="Areas\Recruitment\Models\" />
     <Folder Include="Areas\Salary\Models\" />
   </ItemGroup>
   <ItemGroup>
