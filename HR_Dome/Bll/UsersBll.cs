@@ -19,6 +19,11 @@ namespace Bll
     {
         private static UsersIDao dao = IocType.GetIocType<UserDao>("UserDao", "UserDao");
 
+        public int Insert(users us)
+        {
+            return dao.Insert(us);
+        }
+
         /// <summary>
         /// 查询登录信息
         /// </summary>
@@ -28,11 +33,6 @@ namespace Bll
         {
             Expression<Func<users, bool>> where = (e => e.u_name.Equals(user.u_name)&&e.u_password.Equals(user.u_password));
             return dao.Login(where);
-        }
-
-        public List<users> PageData<K>(Expression<Func<users, K>> order, Expression<Func<users, bool>> where, PageModel page)
-        {
-            return dao.PageData(order, where, page);
         }
     }
 }

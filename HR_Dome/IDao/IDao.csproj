@@ -71,6 +71,7 @@
     <Compile Include="salary_standardIDao.cs" />
     <Compile Include="salary_standard_detailsIDao.cs" />
     <Compile Include="trainingIDao.cs" />
+    <Compile Include="UsersAndRoleIDao.cs" />
     <Compile Include="UsersIDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

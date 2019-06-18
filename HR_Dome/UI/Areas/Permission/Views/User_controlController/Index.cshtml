@@ -15,8 +15,9 @@
     <script type="text/javascript">
         var currentPag = 1;
         var pages = 0;
+        var vw;
         $(function () {
-            var vw = new Vue({
+             vw= new Vue({
                 el: "#bodyTable",
                 data: {
                     nums: null,
@@ -45,6 +46,42 @@
             });
             vw.load();
         });
+        //首页
+        $(document).on("click", "#firstPage", function () {
+            if (currentPag == 1) {
+                alert('抱歉，当前页已是首页！');
+            } else {
+                currentPag = 1;
+                vw.load();
+            }
+        });
+        //上一页
+        $(document).on("click", "#topPage", function () {
+            if (currentPag == 1) {
+                alert('抱歉，当前页已是首页！');
+            } else {
+                currentPag --;
+                vw.load();
+            }
+        });
+        //下一页
+        $(document).on("click", "#nextPage", function () {
+            if (currentPag == pages) {
+                alert('抱歉，当前页已是尾页！');
+            } else {
+                currentPag ++;
+                vw.load();
+            }
+        });
+        //尾页
+        $(document).on("click", "#lastPage", function () {
+            if (currentPag == pages) {
+                alert('抱歉，当前页已是尾页！');
+            } else {
+                currentPag = pages;
+                vw.load();
+            }
+        });
     </script>
 </head>
 <body>
@@ -57,12 +94,12 @@
             </tr>
             <tr>
                 <td>
-                    当前角色总数：{{vwRows}}例
+                    当前角色总数：{{vwRows}}
                 </td>
             </tr>
             <tr>
                 <td align="right">
-                    <input type="button" value="添加用户" class="BUTTON_STYLE1" onclick="location.href='user_add.html'">
+                    <input type="button" value="添加用户" class="BUTTON_STYLE1" onclick="location.href = 'Create'">
                 </td>
             </tr>
         </table>
@@ -94,15 +131,19 @@
                 <td>{{item.u_name}}</td>
                 <td>{{item.u_true_name}}</td>
                 <td>{{item.u_password}}</td>
-                <td>{{item.rid}}</td>
-                <td><a v-bind:href="['/Stu/Delete/'+item.id]" onclick="return confirm('确定删除此用户吗？')">删除</a><a v-bind:href="['/Stu/Edit/'+item.id]">修改</a></td>
+                <td>{{item.rname}}</td>
+                <td>
+                    <img src="../../images/bt_edit.gif" title="编辑" style="cursor:pointer;" onclick="location.href='user_edit.html'" />
+                    <img src="../../images/bt_del.gif" title="删除" style="cursor:pointer;" onclick="return confirm('确定删除此用户吗？')" />
             </tr>
 
         </table>
         <p style="text-align:center;">
-            <a href="user_list.html" style="color:black;">首页</a>
-            <font color="red">{{vwPages}}</font>
-            <a href="user_list.html" style="color:black;">尾页</a>
+            <a id="firstPage" style="color:black;">首页</a>
+            <a id="topPage" style="color:black;">上一页</a>
+            <font color="red">{{vwCurrentPag}}</font>
+            <a id="nextPage" style="color:black;">下一页</a>
+            <a id="lastPage" style="color:black;">尾页</a>
         </p>
     </div>
 </body>

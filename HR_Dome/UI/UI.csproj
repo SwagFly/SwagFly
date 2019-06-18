@@ -998,6 +998,7 @@
     <Content Include="Areas\Salary\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Salary\Views\Salary_Data\Index.cshtml" />
     <Content Include="Areas\Permission\Views\User_controlController\Index.cshtml" />
+    <Content Include="Areas\Permission\Views\User_controlController\Create.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

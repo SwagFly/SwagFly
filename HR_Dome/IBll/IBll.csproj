@@ -71,6 +71,7 @@
     <Compile Include="salary_standardIBLL.cs" />
     <Compile Include="salary_standard_detailsIBLL.cs" />
     <Compile Include="trainingIBLL.cs" />
+    <Compile Include="UsersAndRoleIBll.cs" />
     <Compile Include="UsersIBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
