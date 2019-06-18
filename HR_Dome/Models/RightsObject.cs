@@ -17,7 +17,7 @@ namespace Models
         public int id { get; set; }
         public string text { get; set; }
         public Nullable<int> fid { get; set; }
-        public string adress { get; set; }
+        public string url { get; set; }
         public string state { get; set; }
     }
 }

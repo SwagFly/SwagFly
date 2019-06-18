@@ -22,6 +22,9 @@ namespace UI.Controllers
         // GET: HR_DomeMain
         public ActionResult Login()
         {
+
+            //return RedirectToAction("index", "User_controlController");
+
             return View();
         }
         /// <summary>

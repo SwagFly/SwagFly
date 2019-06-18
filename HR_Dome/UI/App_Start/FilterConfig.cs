@@ -10,9 +10,7 @@ namespace UI
         {
             filters.Add(new HandleErrorAttribute());
             filters.Add(new ExceptionsAttribute());//异常拦截，展出友好界面
-            ////https://blog.csdn.net/csdn_cSharp/article/details/53300986
             //filters.Add(new LoginAttribute());//全局使用登录验证，防止非法侵入
         }
-
     }
 }
