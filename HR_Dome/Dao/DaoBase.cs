@@ -107,7 +107,7 @@ namespace Dao
         /// </summary>
         /// <param name="sql">Sql语句（只做增删改，查询不可使用）</param>
         /// <returns></returns>
-        public static int AUD(string sql) {
+        public int AUD(string sql) {
             return models.Database.ExecuteSqlCommand(sql);
         }
         /// <summary>
