@@ -15,5 +15,7 @@ namespace IBll
         /// <param name="user">包含账户/密码的实体类</param>
         /// <returns>单个信息</returns>
         users Login(users user);
+        //查询全部
+        List<users> SelectUsersAll();
     }
 }
