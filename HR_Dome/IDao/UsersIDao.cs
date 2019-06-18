@@ -19,7 +19,7 @@ namespace IDao
         /// <param name="where"></param>
         /// <returns></returns>
         users Login(Expression<Func<users, bool>> where);
-        //查询全部
-        List<users> SelectAll();
+        //分页查询
+        List<users> PageData<K>(Expression<Func<users, K>> order, Expression<Func<users, bool>> where, PageModel page);
     }
 }

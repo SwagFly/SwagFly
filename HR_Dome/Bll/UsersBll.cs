@@ -30,9 +30,9 @@ namespace Bll
             return dao.Login(where);
         }
 
-        public List<users> SelectUsersAll()
+        public List<users> PageData<K>(Expression<Func<users, K>> order, Expression<Func<users, bool>> where, PageModel page)
         {
-            return dao.SelectAll();
+            return dao.PageData<>
         }
     }
 }
