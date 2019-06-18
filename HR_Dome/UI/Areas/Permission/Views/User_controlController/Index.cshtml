@@ -1,0 +1,109 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>用户管理</title>
+    <link href="~/css/table.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/javascript/vue.js"></script>
+    <script type="text/javascript">
+        var currentPag = 1;
+        var pages = 0;
+        $(function () {
+            var vw = new Vue({
+                el: "#bodyTable",
+                data: {
+                    nums: null,
+                    vwPages: 0,
+                    vwRows: 0,
+                    vwCurrentPag: 0
+                },
+                methods: {
+                    load: function () {
+                        var t = this;
+                        $.ajax({
+                            url: "/User_controlController/Users",
+                            type: "post",
+                            data: "currentPage=" + currentPag,
+                            success: function (msg) {
+                                var dic = eval("("+msg+")");
+                                t.nums = dic["data"];
+                                t.vwCurrentPag = dic["page"].CurrentPage;
+                                t.vwPages = dic["page"].Pages;
+                                pages = t.vwPages;
+                                t.vwRows = dic["page"].Rows;
+                            }
+                        })
+                    }
+                }
+            });
+            vw.load();
+        });
+    </script>
+</head>
+<body>
+    <div id="bodyTable">
+        <table style="width:100%">
+            <tr>
+                <td>
+                    <font color="black">您正在做的业务是：人力资源--权限管理--用户管理 </font>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    当前角色总数：{{vwRows}}例
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <input type="button" value="添加用户" class="BUTTON_STYLE1" onclick="location.href='user_add.html'">
+                </td>
+            </tr>
+        </table>
+        <table width="100%" border="1" cellpadding=5 cellspacing=1
+               bordercolorlight=#848284 bordercolordark=#eeeeee
+               class="TABLE_STYLE1" id="Userstb">
+            <tr class="TR_STYLE1">
+                <td class="TD_STYLE1">
+                    用户编号
+                </td>
+                <td class="TD_STYLE1">
+                    用户名称
+                </td>
+                <td class="TD_STYLE1">
+                    真实姓名
+                </td>
+                <td class="TD_STYLE1">
+                    用户密码
+                </td>
+                <td class="TD_STYLE1">
+                    用户身份
+                </td>
+                <td class="TD_STYLE1">
+                    操作
+                </td>
+            </tr>
+            <tr v-for="(item,i) in nums">
+                <td>{{item.u_id}}</td>
+                <td>{{item.u_name}}</td>
+                <td>{{item.u_true_name}}</td>
+                <td>{{item.u_password}}</td>
+                <td>{{item.rid}}</td>
+                <td><a v-bind:href="['/Stu/Delete/'+item.id]" onclick="return confirm('确定删除此用户吗？')">删除</a><a v-bind:href="['/Stu/Edit/'+item.id]">修改</a></td>
+            </tr>
+
+        </table>
+        <p style="text-align:center;">
+            <a href="user_list.html" style="color:black;">首页</a>
+            <font color="red">{{vwPages}}</font>
+            <a href="user_list.html" style="color:black;">尾页</a>
+        </p>
+    </div>
+</body>
+</html>
