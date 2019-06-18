@@ -12,12 +12,13 @@ namespace Models
     using System;
     using System.Collections.Generic;
     
-    public partial class RightsObject
+    public partial class vw_usersAndRole
     {
-        public int id { get; set; }
-        public string text { get; set; }
-        public Nullable<int> fid { get; set; }
-        public string state { get; set; }
-        public string url { get; set; }
+        public short u_id { get; set; }
+        public string u_name { get; set; }
+        public string u_true_name { get; set; }
+        public string u_password { get; set; }
+        public string rname { get; set; }
+        public int rid { get; set; }
     }
 }

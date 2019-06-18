@@ -59,6 +59,7 @@ namespace Models
         public virtual DbSet<Permission> Permission { get; set; }
         public virtual DbSet<RightsObject> RightsObject { get; set; }
         public virtual DbSet<Role> Role { get; set; }
+        public virtual DbSet<vw_usersAndRole> vw_usersAndRole { get; set; }
     
         public virtual int procDanHao(ObjectParameter danhao)
         {

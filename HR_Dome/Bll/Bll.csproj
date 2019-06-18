@@ -72,6 +72,7 @@
     <Compile Include="salary_standardBLL.cs" />
     <Compile Include="salary_standard_detailsBLL.cs" />
     <Compile Include="trainingBLL.cs" />
+    <Compile Include="UsersAndRoleBll.cs" />
     <Compile Include="UsersBLL.cs" />
   </ItemGroup>
   <ItemGroup>

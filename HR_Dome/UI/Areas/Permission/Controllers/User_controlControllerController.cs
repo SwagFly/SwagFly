@@ -8,6 +8,7 @@ using Models;
 using Bll;
 using IBll;
 using Newtonsoft.Json;
+using System.Data;
 
 namespace UI.Areas.Permission.Controllers
 {
@@ -16,7 +17,9 @@ namespace UI.Areas.Permission.Controllers
     */
     public class User_controlControllerController : Controller
     {
-        UsersIBll ui = IocType.GetIocType<UsersBLL>("UsersBLL", "UsersBLL");
+        RoleIBLL role = IocType.GetIocType<RoleBLL>("RoleBLL", "RoleBLL");
+        UsersIBll ui = IocType.GetIocType<UsersBLL>("UsersBLL", "UsersBLL");//用户表
+        UsersAndRoleIBll ur = IocType.GetIocType<UsersAndRoleBll>("UsersAndRoleBll", "UsersAndRoleBll");//用户表和管理员表
         // GET: Permission/User_controlController
         public ActionResult Index()
         {
@@ -33,7 +36,7 @@ namespace UI.Areas.Permission.Controllers
                 CurrentPage = Convert.ToInt32(Request["currentPage"]),
                 PageSize = 3//每页显示记录数
             };
-            List<users> datas = ui.PageData(e => e.u_id, e => e.u_id > 0, page);
+            List<vw_usersAndRole> datas = ur.PageData(e => e.u_id, e => e.u_id > 0, page);
             Dictionary<string, object> dic = new Dictionary<string, object>();
             dic.Add("data", datas);
             dic.Add("page", page);
@@ -53,18 +56,16 @@ namespace UI.Areas.Permission.Controllers
         }
 
         // POST: Permission/User_controlController/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        [ActionName("role")]
+        public ActionResult Create(users us)
         {
-            try
+            if (ui.Insert(us) > 0)
             {
-                // TODO: Add insert logic here
-
                 return RedirectToAction("Index");
             }
-            catch
+            else
             {
-                return View();
+                return RedirectToAction("Create");
             }
         }
 
@@ -110,6 +111,24 @@ namespace UI.Areas.Permission.Controllers
             {
                 return View();
             }
+        }
+        //查询管理员表
+        public ActionResult GetOption()
+        {
+            List<Role> list = role.SelectAll();
+            return View(list);
+            //List<SelectListItem> list = new List<SelectListItem>();
+            //var list2 = role.SelectAll();
+            //foreach (var item in list2)
+            //{
+            //    SelectListItem cli = new SelectListItem()
+            //    {
+            //        Text = item.rname,
+            //        Value = item.rid.ToString()
+            //    };
+            //    list.Add(cli);
+            //}
+            //ViewData["role"] = list;
         }
     }
 }

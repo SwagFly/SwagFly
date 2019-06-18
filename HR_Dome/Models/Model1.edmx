@@ -500,7 +500,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="text" Type="varchar" MaxLength="50" />
           <Property Name="fid" Type="int" />
-          <Property Name="adress" Type="varchar" MaxLength="100" />
+          <Property Name="url" Type="varchar" MaxLength="100" />
           <Property Name="state" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Role">
@@ -616,6 +616,23 @@
           <Property Name="u_password" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="rid" Type="int" Nullable="false" />
         </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“HR_DB.dbo.vw_usersAndRole”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="vw_usersAndRole">
+          <Key>
+            <PropertyRef Name="u_id" />
+            <PropertyRef Name="u_name" />
+            <PropertyRef Name="u_true_name" />
+            <PropertyRef Name="u_password" />
+            <PropertyRef Name="rid" />
+          </Key>
+          <Property Name="u_id" Type="smallint" Nullable="false" />
+          <Property Name="u_name" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="u_true_name" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="u_password" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="rname" Type="varchar" MaxLength="50" />
+          <Property Name="rid" Type="int" Nullable="false" />
+        </EntityType>
         <Function Name="procDanHao" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="danhao" Type="varchar" Mode="InOut" />
         </Function>
@@ -655,6 +672,16 @@
           <EntitySet Name="salary_standard_details" EntityType="Self.salary_standard_details" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="training" EntityType="Self.training" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vw_usersAndRole" EntityType="Self.vw_usersAndRole" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_usersAndRole].[u_id] AS [u_id], 
+    [vw_usersAndRole].[u_name] AS [u_name], 
+    [vw_usersAndRole].[u_true_name] AS [u_true_name], 
+    [vw_usersAndRole].[u_password] AS [u_password], 
+    [vw_usersAndRole].[rname] AS [rname], 
+    [vw_usersAndRole].[rid] AS [rid]
+    FROM [dbo].[vw_usersAndRole] AS [vw_usersAndRole]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -1285,6 +1312,7 @@
           <EntitySet Name="Permission" EntityType="HR_DBModel.Permission" />
           <EntitySet Name="RightsObject" EntityType="HR_DBModel.RightsObject" />
           <EntitySet Name="Role" EntityType="HR_DBModel.Role" />
+          <EntitySet Name="vw_usersAndRole" EntityType="HR_DBModel.vw_usersAndRole" />
         </EntityContainer>
         <EntityType Name="Permission">
           <Key>
@@ -1301,8 +1329,8 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="text" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="fid" Type="Int32" />
-          <Property Name="adress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="url" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -1310,6 +1338,21 @@
           </Key>
           <Property Name="rid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="rname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vw_usersAndRole">
+          <Key>
+            <PropertyRef Name="u_id" />
+            <PropertyRef Name="u_name" />
+            <PropertyRef Name="u_true_name" />
+            <PropertyRef Name="u_password" />
+            <PropertyRef Name="rid" />
+          </Key>
+          <Property Name="u_id" Type="Int16" Nullable="false" />
+          <Property Name="u_name" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="u_true_name" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="u_password" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="rname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="rid" Type="Int32" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1946,8 +1989,8 @@
           <EntitySetMapping Name="RightsObject">
             <EntityTypeMapping TypeName="HR_DBModel.RightsObject">
               <MappingFragment StoreEntitySet="RightsObject">
+                <ScalarProperty Name="url" ColumnName="url" />
                 <ScalarProperty Name="state" ColumnName="state" />
-                <ScalarProperty Name="adress" ColumnName="adress" />
                 <ScalarProperty Name="fid" ColumnName="fid" />
                 <ScalarProperty Name="text" ColumnName="text" />
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -1959,6 +2002,18 @@
               <MappingFragment StoreEntitySet="Role">
                 <ScalarProperty Name="rname" ColumnName="rname" />
                 <ScalarProperty Name="rid" ColumnName="rid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_usersAndRole">
+            <EntityTypeMapping TypeName="HR_DBModel.vw_usersAndRole">
+              <MappingFragment StoreEntitySet="vw_usersAndRole">
+                <ScalarProperty Name="rid" ColumnName="rid" />
+                <ScalarProperty Name="rname" ColumnName="rname" />
+                <ScalarProperty Name="u_password" ColumnName="u_password" />
+                <ScalarProperty Name="u_true_name" ColumnName="u_true_name" />
+                <ScalarProperty Name="u_name" ColumnName="u_name" />
+                <ScalarProperty Name="u_id" ColumnName="u_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
