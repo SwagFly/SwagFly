@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Bll;
+using IBll;
+using IOC;
+using Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,18 +12,19 @@ namespace UI.Areas.Salary.Controllers
 {
     public class Salary_DataController : Controller
     {
+        //薪酬发放登记表
+        salary_standardIBLL slbll = IocType.GetIocType<salary_standardBLL>("salary_grantBLL", "salary_grantBLL");
+        //薪酬发放详细表
+        salary_standard_detailsIBLL sdbll = IocType.GetIocType<salary_standard_detailsBLL>("salary_grant_detailsBLL", "salary_grant_detailsBLL");
         // GET: Salary/Salary_Data
         public ActionResult Index()
         {
+            //生成订单编号
+            ViewData["dt"] = slbll.GetId();
             return View();
         }
 
-        // GET: Salary/Salary_Data/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
+      
         // GET: Salary/Salary_Data/Create
         public ActionResult Create()
         {
@@ -28,13 +33,20 @@ namespace UI.Areas.Salary.Controllers
 
         // POST: Salary/Salary_Data/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(salary_standard sl)
         {
             try
             {
                 // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                int num = slbll.salary_standardInsert(sl);
+                if (num > 0)
+                {
+                    return RedirectToAction("Index", "Salary_Data");
+                }
+                else
+                {
+                    return View();
+                }
             }
             catch
             {
@@ -42,48 +54,10 @@ namespace UI.Areas.Salary.Controllers
             }
         }
 
-        // GET: Salary/Salary_Data/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
+    
 
-        // POST: Salary/Salary_Data/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
+       
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Salary/Salary_Data/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Salary/Salary_Data/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+    
     }
 }

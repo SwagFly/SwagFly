@@ -13,6 +13,14 @@
     <script type="text/javascript" src="../../javascript/comm/comm.js"></script>
     <script type="text/javascript" src="../../javascript/jquery-1.7.2.js"></script>
     <title>薪酬标准登记</title>
+    <!--单号赋值-->
+    <script type="text/javascript">
+        $(function () {
+            $("#GetId").click(function () {
+                $("#GetId").val("@ViewData["dt"].ToString()");
+            })
+        })
+    </script>
 </head>
 <body>
     <div>
@@ -27,7 +35,7 @@
                 </tr>
                 <tr>
                     <td align="right">
-                        <input type="button" value="提 交" onclick="check()" class="BUTTON_STYLE1">
+                        <input type="submit" value="提 交" @*onclick="check()"*@ class="BUTTON_STYLE1">
                         <input type="reset" value="返 回" class="BUTTON_STYLE1">
                     </td>
                 </tr>
@@ -40,19 +48,19 @@
                         薪酬标准编号
                     </td>
                     <td width="168" class="TD_STYLE2">
-                        <input type="text" name="standard.standardId" value="1353752304959" readonly="readonly" class="INPUT_STYLE2">
+                        <input type="text" name="standard_Id"  readonly="readonly" class="INPUT_STYLE2" id="GetId">
                     </td>
                     <td width="83" class="TD_STYLE1">
                         薪酬标准名称
                     </td>
                     <td width="171" class="TD_STYLE2">
-                        <input type="text" name="standard.standardName" id="standardName" class="INPUT_STYLE2">
+                        <input type="text" name="standardName" id="standardName" class="INPUT_STYLE2">
                     </td>
                     <td width="170" class="TD_STYLE1">
                         薪酬总额
                     </td>
                     <td width="138" class="TD_STYLE2">
-                        <input type="text" name="standard.salarySum" id="sumSalary" value="0.0" readonly class="INPUT_STYLE2" />
+                        <input type="text" name="salarySum" id="sumSalary" value="0.0" readonly class="INPUT_STYLE2" />
                     </td>
                     <td width="103" class="TD_STYLE1">
                         &nbsp;
@@ -66,19 +74,19 @@
                         制定人
                     </td>
                     <td class="TD_STYLE2">
-                        <input type="text" id="designer" name="standard.designer" class="INPUT_STYLE2">
+                        <input type="text" id="designer" name="designer" class="INPUT_STYLE2">
                     </td>
                     <td class="TD_STYLE1">
                         登记人
                     </td>
                     <td class="TD_STYLE2">
-                        <input type="text" name="standard.register" value="better_admin" readonly="readonly" class="INPUT_STYLE2">
+                        <input type="text" name="register" value="better_admin" readonly="readonly" class="INPUT_STYLE2">
                     </td>
                     <td class="TD_STYLE1">
                         登记时间
                     </td>
                     <td class="TD_STYLE2">
-                        <input type="text" id="Tdate" name="standard.registTime" readonly="readonly" class="INPUT_STYLE2">
+                        <input type="text" id="Tdate" name="regist_time" readonly="readonly" class="INPUT_STYLE2">
                     </td>
                     <td class="TD_STYLE1">
                         &nbsp;
@@ -92,7 +100,7 @@
                         备注
                     </td>
                     <td colspan="7" class="TD_STYLE2">
-                        <textarea name="standard.remark" rows="4" class="TEXTAREA_STYLE1"></textarea>
+                        <textarea name="remark" rows="4" class="TEXTAREA_STYLE1"></textarea>
                     </td>
                 </tr>
                 <tr class="TD_STYLE1">
