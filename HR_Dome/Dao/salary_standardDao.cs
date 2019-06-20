@@ -8,6 +8,7 @@ using IDao;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
+using System.Linq.Expressions;
 
 namespace Dao
 {
@@ -61,12 +62,16 @@ namespace Dao
             DataTable dt = SelectProc(sp, "salary_standardDao");
             return sp[0].Value.ToString();
         }
-
         //薪酬新增
         public int salary_standardInsert(salary_standard sl)
         {
             hr.Entry<salary_standard>(sl).State = System.Data.Entity.EntityState.Added;
             return hr.SaveChanges();
+        }
+        //薪酬标准登记复核分页
+        public List<salary_standard> PageData<K>(Expression<Func<salary_standard, K>> order, Expression<Func<salary_standard, bool>> where, PageModel page)
+        {
+            throw new NotImplementedException();
         }
     }
 }

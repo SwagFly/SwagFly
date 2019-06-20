@@ -676,17 +676,16 @@
           <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="vw_usersAndRole" EntityType="Self.vw_usersAndRole" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
-[vw_usersAndRole].[u_id] AS [u_id], 
-[vw_usersAndRole].[u_name] AS [u_name], 
-[vw_usersAndRole].[u_true_name] AS [u_true_name], 
-[vw_usersAndRole].[u_password] AS [u_password], 
-[vw_usersAndRole].[rname] AS [rname], 
-[vw_usersAndRole].[rid] AS [rid]
-FROM [dbo].[vw_usersAndRole] AS [vw_usersAndRole]</DefiningQuery>
+    [vw_usersAndRole].[u_id] AS [u_id], 
+    [vw_usersAndRole].[u_name] AS [u_name], 
+    [vw_usersAndRole].[u_true_name] AS [u_true_name], 
+    [vw_usersAndRole].[u_password] AS [u_password], 
+    [vw_usersAndRole].[rname] AS [rname], 
+    [vw_usersAndRole].[rid] AS [rid]
+    FROM [dbo].[vw_usersAndRole] AS [vw_usersAndRole]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="HR_DBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
@@ -1938,8 +1937,8 @@ FROM [dbo].[vw_usersAndRole] AS [vw_usersAndRole]</DefiningQuery>
           <EntitySetMapping Name="salary_project">
             <EntityTypeMapping TypeName="HR_DBModel.salary_project">
               <MappingFragment StoreEntitySet="salary_project">
-                <ScalarProperty Name="item_id" ColumnName="item_id" />
                 <ScalarProperty Name="item_name" ColumnName="item_name" />
+                <ScalarProperty Name="item_id" ColumnName="item_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

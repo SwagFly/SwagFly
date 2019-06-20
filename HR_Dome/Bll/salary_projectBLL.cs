@@ -16,5 +16,10 @@ namespace Bll
     public class salary_projectBLL: salary_projectIBLL
     {
         private static salary_projectIDao dao = IocType.GetIocType<salary_projectDao>("salary_projectDao", "salary_projectDao");
+        //查询
+        public List<salary_project> selectsalary_project()
+        {
+            return dao.selectsalary_project();
+        }
     }
 }
