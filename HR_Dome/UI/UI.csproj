@@ -1012,6 +1012,10 @@
     <Content Include="Areas\Salary\Views\Salary_Data\salarystandard_check_success.cshtml" />
     <Content Include="Areas\Salary\Views\Salary_Data\salarystandard_query_locate.cshtml" />
     <Content Include="Areas\Salary\Views\Salary_Data\salarystandard_query_list.cshtml" />
+    <Content Include="Areas\Permission\Views\Role\Create.cshtml" />
+    <Content Include="Areas\Permission\Views\Role\Edit.cshtml" />
+    <Content Include="Areas\Permission\Views\Role\Index.cshtml" />
+    <Content Include="Areas\Permission\Views\User_controlController\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
