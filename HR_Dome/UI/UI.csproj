@@ -1041,6 +1041,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Permission\Models\" />
+    <Folder Include="Areas\Permission\Views\Default\" />
     <Folder Include="Areas\Recruitment\Models\" />
     <Folder Include="Areas\Salary\Models\" />
   </ItemGroup>

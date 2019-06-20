@@ -61,7 +61,7 @@ namespace UI.Areas.Permission.Controllers
         // GET: Permission/Role/Edit/5
         public ActionResult Edit(int id)
         {
-            Role ro=role.SelectWhere(e => e.rid== id).FirstOrDefault();
+            Role ro = role.SelectWhere(e => e.rid == id).FirstOrDefault();
             return View(ro);
         }
 
@@ -82,9 +82,9 @@ namespace UI.Areas.Permission.Controllers
         {
             Role ro = new Role()
             {
-                rid=id
+                rid = id
             };
-            if (role.Deletes(ro)>0)
+            if (role.Deletes(ro) > 0)
             {
                 return RedirectToAction("Index");
             }
