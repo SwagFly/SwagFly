@@ -49,6 +49,9 @@ namespace Models
         public virtual DbSet<human_file> human_file { get; set; }
         public virtual DbSet<human_file_dig> human_file_dig { get; set; }
         public virtual DbSet<major_change> major_change { get; set; }
+        public virtual DbSet<Permission> Permission { get; set; }
+        public virtual DbSet<RightsObject> RightsObject { get; set; }
+        public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<salary_grant> salary_grant { get; set; }
         public virtual DbSet<salary_grant_details> salary_grant_details { get; set; }
         public virtual DbSet<salary_project> salary_project { get; set; }
@@ -56,9 +59,6 @@ namespace Models
         public virtual DbSet<salary_standard_details> salary_standard_details { get; set; }
         public virtual DbSet<training> training { get; set; }
         public virtual DbSet<users> users { get; set; }
-        public virtual DbSet<Permission> Permission { get; set; }
-        public virtual DbSet<RightsObject> RightsObject { get; set; }
-        public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<vw_usersAndRole> vw_usersAndRole { get; set; }
     
         public virtual int procDanHao(ObjectParameter danhao)

@@ -685,7 +685,8 @@
     FROM [dbo].[vw_usersAndRole] AS [vw_usersAndRole]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="HR_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1169,6 +1170,31 @@
           <Property Name="regist_time" Type="DateTime" Precision="3" />
           <Property Name="check_time" Type="DateTime" Precision="3" />
         </EntityType>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="pid" />
+          </Key>
+          <Property Name="pid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rid" Type="Int32" />
+          <Property Name="roid" Type="Int32" />
+        </EntityType>
+        <EntityType Name="RightsObject">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="text" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fid" Type="Int32" />
+          <Property Name="url" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="rid" />
+          </Key>
+          <Property Name="rid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="salary_grant">
           <Key>
             <PropertyRef Name="sgr_id" />
@@ -1275,6 +1301,21 @@
           <Property Name="u_password" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="rid" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="vw_usersAndRole">
+          <Key>
+            <PropertyRef Name="u_id" />
+            <PropertyRef Name="u_name" />
+            <PropertyRef Name="u_true_name" />
+            <PropertyRef Name="u_password" />
+            <PropertyRef Name="rid" />
+          </Key>
+          <Property Name="u_id" Type="Int16" Nullable="false" />
+          <Property Name="u_name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="u_true_name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="u_password" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="rname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="rid" Type="Int32" Nullable="false" />
+        </EntityType>
         <EntityContainer Name="HR_DBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="bonus" EntityType="Self.bonus" />
           <EntitySet Name="config_file_first_kind" EntityType="Self.config_file_first_kind" />
@@ -1298,6 +1339,9 @@
           <EntitySet Name="human_file" EntityType="Self.human_file" />
           <EntitySet Name="human_file_dig" EntityType="Self.human_file_dig" />
           <EntitySet Name="major_change" EntityType="Self.major_change" />
+          <EntitySet Name="Permission" EntityType="Self.Permission" />
+          <EntitySet Name="RightsObject" EntityType="Self.RightsObject" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
           <EntitySet Name="salary_grant" EntityType="Self.salary_grant" />
           <EntitySet Name="salary_grant_details" EntityType="Self.salary_grant_details" />
           <EntitySet Name="salary_project" EntityType="Self.salary_project" />
@@ -1305,16 +1349,13 @@
           <EntitySet Name="salary_standard_details" EntityType="Self.salary_standard_details" />
           <EntitySet Name="training" EntityType="Self.training" />
           <EntitySet Name="users" EntityType="Self.users" />
+          <EntitySet Name="vw_usersAndRole" EntityType="Self.vw_usersAndRole" />
           <FunctionImport Name="procDanHao">
           <Parameter Name="danhao" Mode="InOut" Type="String" />
           </FunctionImport>
           <FunctionImport Name="procSalaryGrant">
           <Parameter Name="danhao" Mode="InOut" Type="String" />
           </FunctionImport>
-          <EntitySet Name="Permission" EntityType="HR_DBModel.Permission" />
-          <EntitySet Name="RightsObject" EntityType="HR_DBModel.RightsObject" />
-          <EntitySet Name="Role" EntityType="HR_DBModel.Role" />
-          <EntitySet Name="vw_usersAndRole" EntityType="HR_DBModel.vw_usersAndRole" />
         </EntityContainer>
         <EntityType Name="Permission">
           <Key>
@@ -1866,6 +1907,34 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Permission">
+            <EntityTypeMapping TypeName="HR_DBModel.Permission">
+              <MappingFragment StoreEntitySet="Permission">
+                <ScalarProperty Name="pid" ColumnName="pid" />
+                <ScalarProperty Name="rid" ColumnName="rid" />
+                <ScalarProperty Name="roid" ColumnName="roid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RightsObject">
+            <EntityTypeMapping TypeName="HR_DBModel.RightsObject">
+              <MappingFragment StoreEntitySet="RightsObject">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="fid" ColumnName="fid" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="state" ColumnName="state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="HR_DBModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="rid" ColumnName="rid" />
+                <ScalarProperty Name="rname" ColumnName="rname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="salary_grant">
             <EntityTypeMapping TypeName="HR_DBModel.salary_grant">
               <MappingFragment StoreEntitySet="salary_grant">
@@ -1971,7 +2040,6 @@
           <EntitySetMapping Name="users">
             <EntityTypeMapping TypeName="HR_DBModel.users">
               <MappingFragment StoreEntitySet="users">
-                <ScalarProperty Name="rid" ColumnName="rid" />
                 <ScalarProperty Name="u_id" ColumnName="u_id" />
                 <ScalarProperty Name="u_name" ColumnName="u_name" />
                 <ScalarProperty Name="u_true_name" ColumnName="u_true_name" />
@@ -2004,8 +2072,6 @@
           <EntitySetMapping Name="Role">
             <EntityTypeMapping TypeName="HR_DBModel.Role">
               <MappingFragment StoreEntitySet="Role">
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="ravailable" ColumnName="ravailable" />
                 <ScalarProperty Name="rname" ColumnName="rname" />
                 <ScalarProperty Name="rid" ColumnName="rid" />
               </MappingFragment>
@@ -2014,15 +2080,17 @@
           <EntitySetMapping Name="vw_usersAndRole">
             <EntityTypeMapping TypeName="HR_DBModel.vw_usersAndRole">
               <MappingFragment StoreEntitySet="vw_usersAndRole">
-                <ScalarProperty Name="rid" ColumnName="rid" />
-                <ScalarProperty Name="rname" ColumnName="rname" />
-                <ScalarProperty Name="u_password" ColumnName="u_password" />
-                <ScalarProperty Name="u_true_name" ColumnName="u_true_name" />
-                <ScalarProperty Name="u_name" ColumnName="u_name" />
                 <ScalarProperty Name="u_id" ColumnName="u_id" />
+                <ScalarProperty Name="u_name" ColumnName="u_name" />
+                <ScalarProperty Name="u_true_name" ColumnName="u_true_name" />
+                <ScalarProperty Name="u_password" ColumnName="u_password" />
+                <ScalarProperty Name="rname" ColumnName="rname" />
+                <ScalarProperty Name="rid" ColumnName="rid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="procDanHao" FunctionName="HR_DBModel.Store.procDanHao" />
+          <FunctionImportMapping FunctionImportName="procSalaryGrant" FunctionName="HR_DBModel.Store.procSalaryGrant" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
