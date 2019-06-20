@@ -56,7 +56,7 @@ namespace UI.Areas.Permission.Controllers
         }
 
         // POST: Permission/User_controlController/Create
-        [ActionName("role")]
+        [HttpPost]
         public ActionResult Create(users us)
         {
             if (ui.Insert(us) > 0)
@@ -68,67 +68,50 @@ namespace UI.Areas.Permission.Controllers
                 return RedirectToAction("Create");
             }
         }
-
         // GET: Permission/User_controlController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            users uss = ui.SelectWhere(e => e.u_id == id).FirstOrDefault();
+            return View(uss);
         }
-
         // POST: Permission/User_controlController/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(users us)
         {
-            try
+            if (ui.Updates(us) > 0)
             {
-                // TODO: Add update logic here
-
                 return RedirectToAction("Index");
             }
-            catch
+            else
             {
-                return View();
+                return RedirectToAction("Edit");
             }
         }
 
         // GET: Permission/User_controlController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
 
         // POST: Permission/User_controlController/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        //删除用户
+        public ActionResult Delete(int id)
         {
-            try
+            users us = new users()
             {
-                // TODO: Add delete logic here
-
+                u_id=(short)id
+            };
+            if (ui.Delete(us) > 0)
+            {
                 return RedirectToAction("Index");
             }
-            catch
+            else
             {
-                return View();
+                return RedirectToAction("Index");
             }
         }
         //查询管理员表
         public ActionResult GetOption()
         {
             List<Role> list = role.SelectAll();
-            return View(list);
-            //List<SelectListItem> list = new List<SelectListItem>();
-            //var list2 = role.SelectAll();
-            //foreach (var item in list2)
-            //{
-            //    SelectListItem cli = new SelectListItem()
-            //    {
-            //        Text = item.rname,
-            //        Value = item.rid.ToString()
-            //    };
-            //    list.Add(cli);
-            //}
-            //ViewData["role"] = list;
+            return Content(JsonConvert.SerializeObject(list));
         }
     }
 }

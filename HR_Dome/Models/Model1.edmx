@@ -509,6 +509,8 @@
           </Key>
           <Property Name="rid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="rname" Type="varchar" MaxLength="50" />
+          <Property Name="ravailable" Type="char" MaxLength="2" />
+          <Property Name="title" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="salary_grant">
           <Key>
@@ -1338,6 +1340,8 @@
           </Key>
           <Property Name="rid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="rname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ravailable" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="vw_usersAndRole">
           <Key>
@@ -2000,6 +2004,8 @@
           <EntitySetMapping Name="Role">
             <EntityTypeMapping TypeName="HR_DBModel.Role">
               <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="ravailable" ColumnName="ravailable" />
                 <ScalarProperty Name="rname" ColumnName="rname" />
                 <ScalarProperty Name="rid" ColumnName="rid" />
               </MappingFragment>

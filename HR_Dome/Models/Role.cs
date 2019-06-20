@@ -16,5 +16,7 @@ namespace Models
     {
         public int rid { get; set; }
         public string rname { get; set; }
+        public string ravailable { get; set; }
+        public string title { get; set; }
     }
 }

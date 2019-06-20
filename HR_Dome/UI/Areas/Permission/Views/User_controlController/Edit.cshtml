@@ -8,25 +8,27 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link href="~/css/table.css" rel="stylesheet" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>编辑用户</title>
+    <link rel="stylesheet"
+          href="../../css/table.css" type="text/css" />
     <script src="~/Scripts/jquery-1.10.2.js"></script>
-    <script src="~/javascript/vue.js"></script>
     <script type="text/javascript"
             src="../../javascript/jquery.messager.js"></script>
     <script type="text/javascript" src="../../javascript/user_add.js"></script>
-    <title>添加用户</title>
 </head>
 <body>
-    <form method="post" action="Create" id="form">
+    <form id="form" name="powerAction!doModifyUser" action="Edit" method="post">
         <table width="100%">
             <tr>
                 <td>
-                    <font color="black">您正在做的业务是：人力资源--权限管理--添加用户</font>
+                    <font color="black">您正在做的业务是：人力资源--权限管理--编辑用户</font>
                 </td>
             </tr>
             <tr>
                 <td align="right">
-                    <input type="submit" value="保存" class="BUTTON_STYLE1" id="addUsers" />
+                    <input type="submit" id="update" value="保存;" class="BUTTON_STYLE1" />
+
                     <input type="button" value="返回" class="BUTTON_STYLE1"
                            onclick="history.back()">
                 </td>
@@ -34,29 +36,30 @@
         </table>
         <table width="100%" border="1" cellpadding=3 cellspacing=1
                bordercolorlight=#848284 bordercolordark=#eeeeee
-               class="TABLE_STYLE1">
-            <tr>
+               class="TABLE_STYLE1" id="updates">
+            <tr v-for="(uu,i) in update">
                 <td class="TD_STYLE1">用户名称</td>
                 <td class="TD_STYLE2">
-                    <input type="text" id="userName" name="u_name" />
+                    <input type="text" :value="uu.u_name" id="userName" name="u_name" />
+                    <input type="hidden" name="users.userId" value="1015" />
                 </td>
                 <td class="TD_STYLE1">用户密码</td>
                 <td class="TD_STYLE2">
-                    <input type="password" id="userPassword" name="u_password" />
+                    <input type="password" :value="uu.u_password" id="userPassword" name="u_password" />
                 </td>
             </tr>
             <tr>
                 <td class="TD_STYLE1">真实姓名</td>
                 <td class="TD_STYLE2">
-                    <input type="text" id="userTrueName" name="u_true_name" />
+                    <input type="text" :value="uu.u_true_name" id="userTrueName" name="u_true_name" />
                 </td>
                 <td class="TD_STYLE1">用户身份</td>
-                <td class="TD_STYLE2" id="identity">
-                <select name="rid">
-                    <option  v-for="(item,i) in nums" :value="item.rid">
-                    {{item.rname}}
-                    </option>
-                </select>
+                <td class="TD_STYLE2">
+                    <select name="rid" id="rids">
+                        <option v-for="(item,i) in nums" :value="item.rid">
+                            {{item.rname}}
+                        </option>
+                    </select>
                 </td>
             </tr>
         </table>
@@ -83,7 +86,26 @@
                 }
             });
             vm.load();
-        })
+            var vwUpdate = new Vue({
+                el: "#updates",
+                data: {
+                    update:null
+                },
+                methods:{
+                    load: function () {
+                        var u = this;
+                        $.ajax({
+                            url: "/User_controlController/Edit",
+                            type: "get",
+                            success: function (msg) {
+                                var data = eval("(" + msg + ")");
+                                t.update = data;
+                            }
+                        })
+                    }
+                }
+            });
+        });
     </script>
 </body>
 </html>
