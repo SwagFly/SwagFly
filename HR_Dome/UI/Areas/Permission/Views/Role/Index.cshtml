@@ -8,8 +8,9 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>用户管理</title>
-    <link href="~/css/table.css" rel="stylesheet" />
+    <title>角色管理</title>
+    <link rel="stylesheet"
+          href="../../css/table.css" type="text/css" />
     <script src="~/Scripts/jquery-1.10.2.js"></script>
     <script src="~/javascript/vue.js"></script>
     <script type="text/javascript">
@@ -82,12 +83,12 @@
                 vw.load();
             }
         });
-        //删除用户
-        $(document).on("click", "#delUsers", function () {
+        //删除角色
+        $(document).on("click", "#delRole", function () {
             var id = $(this).attr("tt");
             alert("id：" + id);
             $.ajax({
-                url: "/User_controlController/Delete?id=" + id,
+                url: "/Role/Delete?id=" + id,
                 type:"get",
                 data: null,
                 success: function (msg) {
@@ -97,12 +98,12 @@
                 }
             })
         });
-        //修改用户
-        $(document).on("click", "#udtUsers", function () {
+        //修改角色
+        $(document).on("click", "#udtRole", function () {
             var id = $(this).attr("tt");
             $.ajax({
                 //~/User_controlController/Edit/
-                url: "/User_controlController/Edit?id=" + id,
+                url: "/Role/Edit?id=" + id,
                 type: "get",
                 data: null,
                 success: function (msg) {
@@ -113,58 +114,52 @@
     </script>
 </head>
 <body>
-    <div id="bodyTable">
-        <table style="width:100%">
+    <div> 
+        <table width="100%">
             <tr>
                 <td>
-                    <font color="black">您正在做的业务是：人力资源--权限管理--用户管理 </font>
+                    <font color="black">您正在做的业务是：人力资源--权限管理--角色管理 </font>
                 </td>
             </tr>
             <tr>
                 <td>
-                    当前角色总数：{{vwRows}}
+                    当前角色总数：8例
                 </td>
             </tr>
             <tr>
                 <td align="right">
-                    <input type="button" value="添加用户" class="BUTTON_STYLE1" onclick="location.href = 'Create'">
+                    <input type="button" value="添加角色" class="BUTTON_STYLE1" onclick="location.href='Create'">
                 </td>
             </tr>
         </table>
         <table width="100%" border="1" cellpadding=5 cellspacing=1
                bordercolorlight=#848284 bordercolordark=#eeeeee
-               class="TABLE_STYLE1" id="Userstb">
+               class="TABLE_STYLE1">
             <tr class="TR_STYLE1">
                 <td class="TD_STYLE1">
-                    用户编号
+                    角色编号
                 </td>
                 <td class="TD_STYLE1">
-                    用户名称
+                    角色名称
                 </td>
                 <td class="TD_STYLE1">
-                    真实姓名
+                    角色说明
                 </td>
                 <td class="TD_STYLE1">
-                    用户密码
-                </td>
-                <td class="TD_STYLE1">
-                    用户身份
+                    是否可用
                 </td>
                 <td class="TD_STYLE1">
                     操作
                 </td>
             </tr>
             <tr v-for="(item,i) in nums">
-                <td>{{item.u_id}}</td>
-                <td>{{item.u_name}}</td>
-                <td>{{item.u_true_name}}</td>
-                <td>{{item.u_password}}</td>
+                <td>{{item.rid}}</td>
                 <td>{{item.rname}}</td>
+                <td>{{item.ravailable}}</td>
                 <td>
-                    <img src="../../images/bt_edit.gif" title="编辑" style="cursor:pointer;" id="udtUsers" :tt="item.u_id" />
-                    <img src="../../images/bt_del.gif" title="删除" style="cursor:pointer;" id="delUsers" :tt="item.u_id" onclick="return confirm('确定删除此用户吗？')" />
+                    <img src="../../images/bt_edit.gif" title="编辑" style="cursor:pointer;" id="udtRole" :tt="item.rid" />
+                    <img src="../../images/bt_del.gif" title="删除" style="cursor:pointer;" id="delRole" :tt="item.rid" onclick="return confirm('确定删除此角色吗？')" />
             </tr>
-
         </table>
         <p style="text-align:center;">
             <a id="firstPage" style="color:black;">首页</a>

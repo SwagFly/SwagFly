@@ -16,5 +16,16 @@ namespace Bll
     public class config_file_third_kindBLL: config_file_third_kindIBLL
     {
         private static config_file_third_kindIDao dao = IocType.GetIocType<config_file_third_kindDao>("config_file_third_kindDao", "config_file_third_kindDao");
+
+        /// <summary>
+        /// 查询三级机构
+        /// </summary>
+        /// <param name="third"></param>
+        /// <returns></returns>
+        public List<config_file_third_kind> GetThird(config_file_third_kind third)
+        {
+            return dao.GetThird(third);
+        }
+
     }
 }

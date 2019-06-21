@@ -13,5 +13,13 @@ namespace Dao
     /// </summary>
     public class config_file_third_kindDao:DaoBase<config_file_third_kind>,config_file_third_kindIDao
     {
+        /// <summary>
+        /// 查询三级机构
+        /// </summary>
+        /// <param name="third"></param>
+        /// <returns></returns>
+        public List<config_file_third_kind> GetThird(config_file_third_kind third) {
+            return SelectWhere(e => e.third_kind_id.Equals(third.third_kind_id));
+        }
     }
 }

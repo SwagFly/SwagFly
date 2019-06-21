@@ -13,5 +13,15 @@ namespace Dao
     /// </summary>
     public class config_majorDao:DaoBase<config_major>,config_majorIDao
     {
+        /// <summary>
+        /// 查询所有职位名称
+        /// </summary>
+        /// <param name="major"></param>
+        /// <returns></returns>
+        public List<config_major> GetMajor(config_major major) {
+            return SelectWhere(e => e.major_kind_id.Equals(major.major_kind_id));
+        }
+
+
     }
 }

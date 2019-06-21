@@ -19,6 +19,11 @@ namespace Bll
     {
         private static UsersIDao dao = IocType.GetIocType<UserDao>("UserDao", "UserDao");
 
+        public int Delete(users us)
+        {
+            return dao.Deletes(us);
+        }
+
         public int Insert(users us)
         {
             return dao.Insert(us);
@@ -33,6 +38,16 @@ namespace Bll
         {
             Expression<Func<users, bool>> where = (e => e.u_name.Equals(user.u_name)&&e.u_password.Equals(user.u_password));
             return dao.Login(where);
+        }
+
+        public List<users> SelectWhere(Expression<Func<users, bool>> where)
+        {
+            return dao.SelectWhere(where);
+        }
+
+        public int Updates(users us)
+        {
+            return dao.Updates(us);
         }
     }
 }

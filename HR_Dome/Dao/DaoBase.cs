@@ -99,7 +99,12 @@ namespace Dao
         /// </summary>
         /// <param name="t">实体对象</param>
         /// <returns>0：删除失败，1：删除成功</returns>
-        public int Delete(T t) {
+        public int Delete(T t,object keyValue) {
+            var entity = models.Set<T>().Find(keyValue);
+            if (entity != null)
+            {
+                models.Entry<T>(entity).State = System.Data.Entity.EntityState.Detached;
+            }
             models.Entry<T>(t).State = System.Data.Entity.EntityState.Deleted;
             return models.SaveChanges();
         }
