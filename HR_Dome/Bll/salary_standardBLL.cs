@@ -8,6 +8,8 @@ using Models;
 using Dao;
 using IDao;
 using IOC;
+using System.Linq.Expressions;
+
 namespace Bll
 {
     /// <summary>
@@ -24,6 +26,9 @@ namespace Bll
         {
             return dao.GetId();
         }
+
+       
+
         /// <summary>
         /// 薪酬新增
         /// </summary>
@@ -33,5 +38,16 @@ namespace Bll
         {
             return dao.salary_standardInsert(sl);
         }
+        //总例数
+        public List<salary_standard> FindAll<T>(Expression<Func<salary_standard, bool>> where) where T : class
+        {
+            return dao.FindAll<salary_standard>(where);
+        }
+        //薪酬标准登记复核分页
+        public List<salary_standard> PageData<K>(Expression<Func<salary_standard, K>> order, Expression<Func<salary_standard, bool>> where, PageModel page)
+        {
+            return dao.PageData(order,where,page);
+        }
+     
     }
 }

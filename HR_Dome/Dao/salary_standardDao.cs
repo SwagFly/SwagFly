@@ -68,10 +68,27 @@ namespace Dao
             hr.Entry<salary_standard>(sl).State = System.Data.Entity.EntityState.Added;
             return hr.SaveChanges();
         }
+        //总例数
+        public List<T> FindAll<T>(Expression<Func<T, bool>> where) where T : class
+        {
+            if (where != null)
+            {
+                return hr.Set<T>().Where(where).ToList();
+            }
+            else
+            {
+                return hr.Set<T>().ToList();
+            }
+        }
         //薪酬标准登记复核分页
         public List<salary_standard> PageData<K>(Expression<Func<salary_standard, K>> order, Expression<Func<salary_standard, bool>> where, PageModel page)
         {
-            throw new NotImplementedException();
+            var dt =hr.salary_standard.OrderBy(order).Where(where);
+            page.Rows = dt.Count();//总记录数
+            page.Pages = (page.Rows-1)/page.PageSize+1;
+            return dt.Skip((page.CurrentPage - 1) * page.PageSize)//where部分
+                .Take(page.PageSize).ToList();//top部分
         }
+        
     }
 }

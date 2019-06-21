@@ -31,14 +31,6 @@ namespace UI.Areas.Salary.Controllers
             List<salary_project> list = spbll.selectsalary_project();
             return View(list);
         }
-        ////查询薪酬报销分类
-        //public ActionResult salary_project()
-        //{
-        //    //List<salary_project> list = spbll.selectsalary_project();
-        //    return View();/* Content(JsonConvert.SerializeObject(list));*/
-        //}
-
-
         // GET: Salary/Salary_Data/Create
         public ActionResult Create()
         {
@@ -82,12 +74,28 @@ namespace UI.Areas.Salary.Controllers
 
 
 
-        //薪酬标准登记复核
+        //薪酬标准登记复核分页视图
         // GET: Salary/Salary_Data/Create
         public ActionResult salarystandard_check_list()
         {
-
+            //总例数
+            List<salary_standard> uh = slbll.FindAll<salary_standard>(e => e.check_status != 1);//查询分页总数 没有复核的所有数据
+            ViewBag.str = uh.Count;//查询表中数据 几条 返回到前台
             return View();
+        }
+        //薪酬标准登记复核分页
+        public ActionResult salarystandard_check_listFenYe()
+        {
+            PageModel page = new PageModel()
+            {
+                CurrentPage = Convert.ToInt32(Request["currentPage"]),
+                PageSize=3//每页显示三条
+            };
+            List<salary_standard> dt = slbll.PageData(e=>e.ssd_id,e=>e.ssd_id>0,page);
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic.Add("data", dt);
+            dic.Add("page",page);
+            return Content(JsonConvert.SerializeObject(dic));
         }
         //薪酬标准登记复核修改
         public ActionResult salarystandard_check()
